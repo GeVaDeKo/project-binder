@@ -1,4 +1,4 @@
-# Laravel Binder
+# Project Binder
 
 Automatically generate an AI-friendly overview of your Laravel project (and Python later on).
 
