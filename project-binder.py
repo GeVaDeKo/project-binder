@@ -35,6 +35,7 @@ from binder.focus import (
 
 def main():
     args = parse_args()
+    print(args)
     
     config.set_root(args.project_path)
     
