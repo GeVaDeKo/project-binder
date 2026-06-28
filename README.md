@@ -18,3 +18,10 @@ if you want to focus to a specific i.e. User controller/model/service use:
 ```bash
 binder ~/path/to/your/project --focus User
 ```
+
+## Update
+Maybe there is an update (you never know) use:
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/GeVaDeKo/project-binder/main/update.sh)
+```
+to update 
