@@ -14,6 +14,8 @@ fi
 
 cd "$INSTALL_DIR"
 
+sudo git pull origin main
+
 sudo chmod +x "$INSTALL_DIR/project-binder.py"
 sudo ln -sf "$INSTALL_DIR/project-binder.py" "$BIN_LINK"
 
