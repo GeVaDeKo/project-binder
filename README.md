@@ -11,5 +11,5 @@ bash <(curl -fsSL https://raw.githubusercontent.com/GeVaDeKo/project-binder/main
 ## Usage
 
 ```bash
-bash binder ~/path/to/your/project
+binder ~/path/to/your/project
 ```
