@@ -6,21 +6,21 @@ def detect_warnings(path: str, text: str) -> list:
     if "<script" in text.lower():
         warnings.append({
             "type": "inline_javascript",
-            "severity": "annoying_future_geert",
+            "severity": "annoying_future_me",
             "message": "Inline JavaScript gevonden. Overweeg resource/js/components/."
         })
     
     if "<style" in text.lower():
         warnings.append({
             "type": "inline_css",
-            "severity": "annoying_future_geert",
+            "severity": "annoying_future_me",
             "message": "Inline CSS gevonden. Overweeg resources/css/app.css."
         })
     
     if "192.168." in text:
         warnings.append({
             "type": "hardcoded_local_ip",
-            "severity": "future_geert_will_sigh",
+            "severity": "future_me_will_sigh",
             "message": "Hardcoded lokaal IP-adres gevonden."
         })
 
@@ -35,7 +35,7 @@ def detect_warnings(path: str, text: str) -> list:
     if metrics["total_lines"] > 400:
         warnings.append({
             "type": "large_file",
-            "severity": "future_geert_will_start_refactoring",
+            "severity": "future_me_will_start_refactoring",
             "message": f"Bestand is groot: {metrics['total_lines']} regels."
         })
     

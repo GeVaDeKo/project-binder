@@ -1,18 +1,13 @@
 import binder.config as config
+from binder.metrics import count_lines
 from binder.files import should_skip, read_file
 from binder.warnings import detect_warnings
+from binder.extractors.relations import find_model_relations
 from binder.extractors.methods import find_php_methods
-from binder.metrics import count_lines
 
-def scan_php_directory(
-    directory: str,
-    models=None,
-    services=None,
-    requests=None,
-    deep=False
-) -> list:
+def scan_services(deep=False) -> list:
     results = []
-    path = config.ROOT / directory
+    path = config.ROOT / "app/Services"
     
     if not path.exists():
         return results
@@ -24,16 +19,19 @@ def scan_php_directory(
         text = read_file(file)
         rel = str(file.relative_to(config.ROOT))
         
+        methods = find_php_methods(
+            text,
+            models=[],
+            services=[],
+            requests=[],
+            deep=deep,
+        )
+        
         results.append({
             "path": rel,
             "metrics": count_lines(text),
-            "methods": find_php_methods(
-                text,
-                models=models,
-                services=services,
-                requests=requests,
-                deep=deep
-            ),
+            "relations": find_model_relations(text),
+            "methods": methods,
             "warnings": detect_warnings(rel, text)
         })
     
