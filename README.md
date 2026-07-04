@@ -19,7 +19,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/GeVaDeKo/project-binder/main
 binder ~/path/to/your/project
 ```
 
-if you want to focus to a specific i.e. User controller/model/service/view/routes use:
+To generate context for a specific feature (for example: User):
 ```bash
 binder ~/path/to/your/project --focus User
 ```
@@ -40,6 +40,6 @@ So
 ```bash
 binder ~/path/to/your/project --focus User -c -m
 ```
-Will only return controllers with "User" in the name, the "User" model and all models that use the "User" model.
+Returns controllers matching "User", the User model, and related models that reference the User model.<br>
 <img width="306" height="271" alt="image" src="https://github.com/user-attachments/assets/8257dde1-60d0-4ead-9632-6c0b1afbac88" />
 <img width="423" height="339" alt="image" src="https://github.com/user-attachments/assets/3e8685ef-5480-44e0-8cb4-8bbd118e7096" />
