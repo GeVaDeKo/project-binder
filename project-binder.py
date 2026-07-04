@@ -153,10 +153,10 @@ def build_focus_context(scan, focus, scopes):
     views = filter_by_path(scan["views"], focus)
     routes = filter_routes(scan["routes"], focus)
     
-    executable = Path(sys.argv[0]).name
+    executable = Path(sys.argv[0])
     command = " ".join(
         [Path(sys.argv[0]).name] +
-        [sys.argv[1]]
+        [sys.argv[6]]
     )
     
     context = build_full_context(scan)
