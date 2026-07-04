@@ -159,7 +159,7 @@ def build_focus_context(scan, focus, scopes):
     
     command = " ".join(
         [Path(sys.argv[0]).name] +
-        [sys.orig_argv[0]]
+        [" ".join(sys.argv)]
     )
     
     context = build_full_context(scan)
