@@ -1,6 +1,7 @@
 from pathlib import Path
 
 ROOT = None
+BINDER_DIR = None
 
 SKIP_COLUMN_TYPES = {
     "index", "foreign", "dropColumn"

@@ -24,4 +24,4 @@ Maybe there is an update (you never know) use:
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/GeVaDeKo/project-binder/main/update.sh)
 ```
-to update 
+to update 😁

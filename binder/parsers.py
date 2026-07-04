@@ -29,6 +29,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Project Binder")
     parser.add_argument("project_path")
     parser.add_argument("--focus", default=None)
+    parser.add_argument("-c", "--controllers", action="store_true")
+    parser.add_argument("-m", "--models", action="store_true")
+    parser.add_argument("-s", "--services", action="store_true")
+    parser.add_argument("-v", "--views", action="store_true")
+    parser.add_argument("-r", "--routes", action="store_true")
+    parser.add_argument("-d", "--database", action="store_true")
     
     return parser.parse_args()
 
@@ -49,3 +55,35 @@ def find_matching_brace(text: str, open_index: int) -> int:
                 return i
     
     return -1
+
+# Focus flags parser
+def parse_focus_scope(args):
+    if not args.focus:
+        return None, None, {}
+    
+    if ":" in args.focus:
+        focus_type, focus_value = args.focus.split(":", 1)
+    else:
+        focus_type, focus_value = "all", args.focus
+    
+    scopes = {
+        "controllers": args.controllers,
+        "models": args.models,
+        "services": args.services,
+        "views": args.views,
+        "routes": args.routes,
+        "database": args.database,
+    }
+    
+    if focus_type == "model":
+        scopes["models"] = True
+        scopes["database"] = True
+    
+    if focus_type == "services":
+        scopes["services"] = True
+    
+    if focus_type == "controller":
+        scopes["controllers"] = True
+        scopes["routes"] = True
+    
+    return focus_type, focus_value, scopes
