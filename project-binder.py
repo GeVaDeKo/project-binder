@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 from datetime import datetime
-import json, sys
+from pathlib import Path
+
+import json, sys, shlex
 import binder.config as config
 
 from binder.files import collect_class_names
@@ -124,6 +126,7 @@ def build_full_context(scan):
             "vendor": "GeVaDeKo",
             "generated_at": datetime.now().isoformat(timespec="seconds"),
             "command": "",
+            "executable": "",
             "scopes": {},
             "context_mode": "full",
             "focus": None,
@@ -150,9 +153,16 @@ def build_focus_context(scan, focus, scopes):
     views = filter_by_path(scan["views"], focus)
     routes = filter_routes(scan["routes"], focus)
     
+    executable = Path(sys.argv[0]).name
+    command = " ".join(
+        [Path(sys.argv[0]).name] +
+        [shlex.quote(arg) for arg in sys.argv[:1]]
+    )
+    
     context = build_full_context(scan)
     
-    context["generator"]["command"] = " ".join(sys.argv)
+    context["generator"]["command"] = command
+    context["generator"]["executable"] = executable
     context["generator"]["scopes"] = scopes
     context["generator"]["context_mode"] = "focus"
     context["generator"]["focus"] = focus
