@@ -1,6 +1,6 @@
 # Project Binder
 
-Automatically generate an AI-friendly overview of your Laravel project (and Python later on).
+Generate structured project context that helps AI understand your codebase.
 
 ## Install
 
