@@ -154,13 +154,12 @@ def build_focus_context(scan, focus, scopes):
     routes = filter_routes(scan["routes"], focus)
     
     executable = " ".join(
-        [shlex.quote(arg) for arg in sys.argv[:1]] + 
-        [Path(sys.argv[0]).name]
+        [shlex.quote(arg) for arg in sys.argv[:1]]
     )
     
     command = " ".join(
         [Path(sys.argv[0]).name] +
-        [sys.argv[0]]
+        [sys.orig_argv[0]]
     )
     
     context = build_full_context(scan)
