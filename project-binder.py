@@ -156,7 +156,7 @@ def build_focus_context(scan, focus, scopes):
     executable = Path(sys.argv[0]).name
     command = " ".join(
         [Path(sys.argv[0]).name] +
-        [shlex.quote(arg) for arg in sys.argv[:1]]
+        [shlex.quote(arg) for arg in sys.argv[:2]]
     )
     
     context = build_full_context(scan)
