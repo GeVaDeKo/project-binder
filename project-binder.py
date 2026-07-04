@@ -156,12 +156,12 @@ def build_focus_context(scan, focus, scopes):
     executable = " ".join(
         [shlex.quote(arg) for arg in sys.argv[:1]]
     )
-    full_command = " ".join(sys.argv)
-    split_command = re.findall("binder", full_command)
+    full_command = str(" ".join(sys.argv))
+    split_command = re.findall("/binder", full_command)
     
     command = " ".join(
         [Path(sys.argv[0]).name] +
-        [split_command[1]]
+        [split_command[0]]
     )
     
     context = build_full_context(scan)
