@@ -25,7 +25,7 @@ if you want to focus to a specific i.e. User controller/model/service/view/route
 ```bash
 binder ~/path/to/your/project --focus User
 ```
-This will also find usages such as "UserUpload".
+This will also find controllers such as "RegisteredUserController", and other models that use the User model.
 
 Focus can be used with other flags such as:
 ```bash
