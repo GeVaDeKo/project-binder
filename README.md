@@ -41,4 +41,4 @@ So
 ```bash
 binder ~/path/to/your/project --focus User -c -m
 ```
-Will only return a models and controllers with "User" in the name.
+Will only return models and controllers with "User" in the name.
