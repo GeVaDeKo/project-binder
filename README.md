@@ -41,5 +41,9 @@ So
 binder ~/path/to/your/project --focus User -c -m
 ```
 Returns controllers matching "User", the User model, and related models that reference the User model.<br>
-<img width="306" height="271" alt="image" src="https://github.com/user-attachments/assets/8257dde1-60d0-4ead-9632-6c0b1afbac88" />
-<img width="423" height="339" alt="image" src="https://github.com/user-attachments/assets/3e8685ef-5480-44e0-8cb4-8bbd118e7096" />
+A "_project_context.json" file will be automatically be created when you use "--focus".<br>
+<div style="display: flex; justify-content: center;">
+  <img width="440" height="652" alt="project_context" src="https://github.com/user-attachments/assets/23265b26-f59f-4138-9be2-8362ade4b436" /><br>
+  <img width="486" height="420" alt="user_context" src="https://github.com/user-attachments/assets/bc1a7a3d-3e83-4b71-b2eb-f272415ef39c" /><br>
+  <img width="299" height="370" alt="tree_structure" src="https://github.com/user-attachments/assets/dea62278-f195-4013-8d5c-a890bcde0862" /><br>
+</div>
