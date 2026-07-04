@@ -27,7 +27,7 @@ This will also find controllers such as "RegisteredUserController", and other mo
 
 Focus can be used with other flags such as:
 ```bash
--d -c -m -v -s
+-d -c -m -v -s -r
 ```
 -d: Will only include database information.<br>
 -c: Will only include controllers.<br>
