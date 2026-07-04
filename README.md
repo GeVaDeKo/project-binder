@@ -31,11 +31,11 @@ Focus can be used with other flags such as:
 ```bash
 -d -c -m -v -s
 ```
--d: Will only include database information.
--c: Will only include controllers.
--m: Will only include models.
--v: Will only include views.
--s: Will only include services.
+-d: Will only include database information.<br>
+-c: Will only include controllers.<br>
+-m: Will only include models.<br>
+-v: Will only include views.<br>
+-s: Will only include services.<br>
 
 So
 ```bash
