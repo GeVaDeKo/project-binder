@@ -7,9 +7,38 @@ SKIP_COLUMN_TYPES = {
     "index", "foreign", "dropColumn"
 }
 
-IGNORE_DIRS= {
-    "vendor", "node_modules", "storage", "bootstrap/cache",
-    ".git", ".idea", ".vscode", "public"
+IGNORE_DIRS = {
+    "vendor",
+    "node_modules",
+    "storage",
+    "bootstrap/cache",
+
+    ".git",
+    ".idea",
+    ".vscode",
+
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+
+    "env",
+    ".env",
+    "venv",
+    ".venv",
+
+    "dist",
+    "build",
+}
+
+IGNORE_FILES = {
+    ".DS_Store",
+    "Thumbs.db",
+}
+
+IGNORE_EXTENSIONS = {
+    ".pyc",
+    ".pyo",
 }
 
 OUTPUT_FILE = "project_context.json"
