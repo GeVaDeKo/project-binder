@@ -1,7 +1,7 @@
 import re
 
 import binder.config as config
-from binder.parsers import parse_route_definition
+from binder.parsers.parsers import parse_route_definition
 from binder.files import read_file
 from binder.warnings import detect_warnings
 

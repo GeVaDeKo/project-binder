@@ -20,6 +20,7 @@ from binder.builders.generator import build_generator
 # Context
 from binder.builders.laravel.context import build_laravel_context, build_laravel_focus_context
 from binder.builders.python.context import build_python_context, build_python_focus_context
+from binder.builders.android.context import build_android_context
 
 def write_context(filename, context):
     output_file = config.ROOT / filename
@@ -68,6 +69,9 @@ def build_full_context(scan):
         [shlex.quote(arg) for arg in sys.argv[1:]]
     )
     
+    if scan["project_type"] == "android":
+        context.update(build_android_context(scan))
+        
     if scan["project_type"] in ("laravel", "mixed"):
         context.update(build_laravel_context(scan))
     

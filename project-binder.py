@@ -2,7 +2,7 @@
 import binder.config as config
 
 # Parsers
-from binder.parsers import parse_args, parse_focus_scope
+from binder.parsers.parsers import parse_args, parse_focus_scope
 
 # Dectectors
 from binder.detectors.project_type import detect_project_type

@@ -8,7 +8,7 @@ from binder.warnings import detect_warnings
 # Exctractors
 from binder.extractors.python.imports import get_python_imports
 from binder.extractors.python.functions import get_python_args, get_python_returns
-from binder.extractors.python.comment import collect_python_comments, comments_above
+from binder.extractors.python.comments import collect_python_comments, comments_above
 
 def scan_python_files():
     results = []
