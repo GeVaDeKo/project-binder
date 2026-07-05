@@ -38,3 +38,16 @@ def scan_php_directory(
         })
     
     return results
+
+# Zoekt en vind "classes"
+def collect_class_names(directory: str) -> set:
+    path = config.ROOT / directory
+    
+    if not path.exists():
+        return set()
+    
+    return {
+        file.stem
+        for file in path.rglob("*.php")
+        if not should_skip(file)
+    }

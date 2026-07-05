@@ -21,16 +21,3 @@ def read_json_file(path: Path) -> dict:
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return {}
-
-# Zoekt en vind "classes"
-def collect_class_names(directory: str) -> set:
-    path = config.ROOT / directory
-    
-    if not path.exists():
-        return set()
-    
-    return {
-        file.stem
-        for file in path.rglob("*.php")
-        if not should_skip(file)
-    }

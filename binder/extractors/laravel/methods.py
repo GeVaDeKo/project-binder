@@ -1,6 +1,7 @@
 import re
 from binder.extractors.laravel.dependencies import extract_typed_dependencies
-from binder.parsers import find_matching_brace
+from binder.extractors.laravel.comments import collect_laravel_comments
+from binder.parsers.delimiters import find_matching
 
 # Doorzoekt het bestand op "methods" (private|public function)
 def find_php_methods(text, models=None, services=None, requests=None, deep=False) -> list:
@@ -20,7 +21,7 @@ def find_php_methods(text, models=None, services=None, requests=None, deep=False
         deps = extract_typed_dependencies(arguments, models, services, requests)
         
         open_brace_index = match.end() - 1
-        close_brace_index = find_matching_brace(text, open_brace_index)
+        close_brace_index = find_matching(text, open_brace_index)
         
         if close_brace_index == -1:
             continue
@@ -31,6 +32,7 @@ def find_php_methods(text, models=None, services=None, requests=None, deep=False
             "visibility": match.group(1),
             "name": match.group(2),
             "arguments": arguments,
+            "comments": collect_laravel_comments(body),
             **deps
         }
         

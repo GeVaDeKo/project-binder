@@ -1,6 +1,5 @@
 from binder.scanners.laravel.migrations import scan_migrations
-from binder.files import collect_class_names
-from binder.scanners.laravel.php import scan_php_directory
+from binder.scanners.laravel.php import scan_php_directory, collect_class_names
 from binder.scanners.laravel.models import scan_models
 from binder.scanners.laravel.services import scan_services
 from binder.scanners.laravel.routes import scan_routes

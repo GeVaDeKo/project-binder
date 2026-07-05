@@ -1,9 +1,14 @@
 from binder.detectors.laravel import is_laravel_project
 from binder.detectors.python import is_python_project
+from binder.detectors.android import is_android_project
 
 def detect_project_type(root):
     has_laravel = is_laravel_project(root)
     has_python = is_python_project(root)
+    has_android = is_android_project(root)
+    
+    if has_android:
+        return "android"
     
     if has_laravel and has_python:
         return "mixed"

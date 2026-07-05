@@ -8,6 +8,7 @@ from binder.analyzers.database_relations import guess_laravel_table
 from binder.extractors.laravel.relations import find_model_relations
 from binder.extractors.laravel.methods import find_php_methods
 from binder.extractors.laravel.model_metadata import extract_model_table
+from binder.extractors.laravel.comments import collect_laravel_comments
 
 def scan_models(deep=False) -> list:
     results = []
@@ -42,6 +43,7 @@ def scan_models(deep=False) -> list:
             "metrics": count_lines(text),
             "relations": find_model_relations(text),
             "methods": methods,
+            "comments": collect_laravel_comments(text),
             "warnings": detect_warnings(rel, text)
         })
     
