@@ -1,11 +1,12 @@
 def build_android_project_summary(scan):
-    files = scan.get("android", [])
+    project = scan.get("android_project", {})
 
     return {
-        "type": "android",
+        "sdk": project.get("sdk", {}),
+        "features": project.get("features", []),
         "statistics": {
-            "files": len(files),
-            "kotlin": sum(1 for f in files if f["extension"] == ".kt"),
-            "java": sum(1 for f in files if f["extension"] == ".java"),
+            "files": len(scan.get("android", [])),
+            "kotlin": len([f for f in scan.get("android", []) if f.get("extension") == ".kt"]),
+            "java": len([f for f in scan.get("android", []) if f.get("extension") == ".java"]),
         }
     }

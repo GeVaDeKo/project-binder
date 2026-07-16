@@ -2,7 +2,6 @@ def build_python_project_summary(scan):
     files = scan.get("python", [])
 
     return {
-        "type": "python",
         "statistics": {
             "files": len(files),
             "classes": sum(len(f.get("classes", [])) for f in files),

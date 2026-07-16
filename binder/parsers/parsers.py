@@ -1,4 +1,4 @@
-import re, argparse
+import re, argparse, sys
 
 # Deelt de routes op in uri, controller en action
 def parse_route_definition(definition):
@@ -24,6 +24,20 @@ def parse_route_definition(definition):
     
     return route
 
+# Serve commando
+def parse_serve_command():
+    if len(sys.argv) < 2:
+        return None
+    if sys.argv[1].lower() != "serve":
+        return None
+    
+    target = sys.argv[2] if len(sys.argv) > 2 else None
+    
+    return {
+        "command": "serve",
+        "target": target,
+    }
+
 # Parsed de argumenten die mee worden gegeven als "--flag"
 def parse_args():
     parser = argparse.ArgumentParser(description="Project Binder")
@@ -35,6 +49,10 @@ def parse_args():
     parser.add_argument("-v", "--views", action="store_true")
     parser.add_argument("-r", "--routes", action="store_true")
     parser.add_argument("-d", "--database", action="store_true")
+    parser.add_argument("--serve", action="store_true")
+    parser.add_argument("--serve-worker", action="store_true")
+    parser.add_argument("--serve-status", action="store_true")
+    parser.add_argument("--serve-stop", action="store_true")
     
     return parser.parse_args()
 

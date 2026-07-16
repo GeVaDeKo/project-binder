@@ -20,7 +20,7 @@ from binder.builders.generator import build_generator
 # Context
 from binder.builders.laravel.context import build_laravel_context, build_laravel_focus_context
 from binder.builders.python.context import build_python_context, build_python_focus_context
-from binder.builders.android.context import build_android_context
+from binder.builders.android.context import build_android_context, build_android_focus_context
 
 def write_context(filename, context):
     output_file = config.ROOT / filename
@@ -30,7 +30,7 @@ def write_context(filename, context):
         encoding="utf-8",
     )
     
-    print(f"Laravel context geschreven naar: {output_file}")
+    print(f"Context geschreven naar: {output_file}")
 
 def build_focused_context_graph(context_graph, focus):
     if not focus:
@@ -55,9 +55,15 @@ def build_focused_context_graph(context_graph, focus):
     }
 
 def build_full_context(scan):
+    project_type = scan.get("project_type", "unknown")
+    
     context = {
-        "generator": build_generator(),
-        "project": build_project_info(scan),
+        "generator": build_generator(
+            context_mode="full",
+            focus=None,
+            scopes={}
+        ),
+        "project": build_project_info(scan, project_type),
     }
     
     executable = " ".join(
@@ -69,13 +75,13 @@ def build_full_context(scan):
         [shlex.quote(arg) for arg in sys.argv[1:]]
     )
     
-    if scan["project_type"] == "android":
+    if project_type == "android":
         context.update(build_android_context(scan))
         
-    if scan["project_type"] in ("laravel", "mixed"):
+    if project_type in ("laravel", "mixed"):
         context.update(build_laravel_context(scan))
     
-    if scan["project_type"] in ("python", "mixed"):
+    if project_type in ("python", "mixed"):
         context.update(build_python_context(scan))
         context["generator"]["command"] = command
         context["generator"]["executable"] = executable
@@ -83,6 +89,8 @@ def build_full_context(scan):
     return context
 
 def build_focus_context(scan, focus, scopes):
+    project_type = scan.get("project_type", "unknown")
+    
     filtered_laravel = {
         "controllers": filter_controllers(scan["controllers"], focus),
         "models": filter_models(scan["models"], focus),
@@ -97,17 +105,31 @@ def build_focus_context(scan, focus, scopes):
             focus=focus,
             scopes=scopes,
         ),
-        "project": build_focus_project_info(),
+        "project": build_focus_project_info(
+            scan,
+            project_type,
+        ),
     }
     
-    if scan["project_type"] in ("laravel", "mixed"):
+    if project_type == "android":
         context.update(
-            build_laravel_focus_context(filtered_laravel, scopes)
+            build_android_focus_context(scan, focus)
         )
     
-    if scan["project_type"] in ("python", "mixed"):
+    if project_type == "laravel":
         context.update(
-            build_python_focus_context(scan, focus)
+            build_laravel_focus_context(
+                filtered_laravel,
+                scopes,
+            )
+        )
+    
+    if project_type == "python":
+        context.update(
+            build_python_focus_context(
+                scan,
+                focus
+            )
         )
     
     return context
