@@ -1,2 +1,2 @@
 @echo off
-python "%~dp0project-binder.py" %*
+py "%~dp0project-binder.py" %*

@@ -1,0 +1,622 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+.hero {
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    color: #93c5fd;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 32px;
+}
+
+.stat-card span {
+    color: #94a3b8;
+}
+
+.context-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    margin-top: 12px;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.context-card:hover {
+    border-color: #60a5fa;
+}
+
+.context-card h3 {
+    margin: 0 0 6px;
+}
+
+.context-card p {
+    margin: 0;
+    color: #94a3b8;
+}
+
+.badge {
+    align-self: start;
+    background: #1e293b;
+    color: #bfdbfe;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+a {
+    color: #93c5fd;
+}
+
+.app-shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 28px 20px;
+    background: #0b1220;
+    border-right: 1px solid #1f2937;
+}
+
+.sidebar h2 {
+    margin: 0 0 28px;
+    font-size: 22px;
+}
+
+.sidebar-muted {
+    margin: 0 0 10px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 11px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+.sidebar-link:hover {
+    background: #111827;
+    border-color: #1f2937;
+    color: #ffffff;
+}
+
+.sidebar-link.active {
+    background: #172554;
+    border-color: #1d4ed8;
+    color: #bfdbfe;
+    font-weight: 700;
+}
+
+.content {
+    min-width: 0;
+    padding: 36px 42px;
+}
+
+pre {
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.code-section {
+    margin-top: 32px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+.section-heading span,
+.section-label,
+.file-path,
+.empty-state {
+    color: #94a3b8;
+}
+
+.file-summary {
+    min-width: 0;
+}
+
+.code-file {
+    margin-bottom: 18px;
+    padding: 22px;
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.code-file > summary {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.code-file > summary::-webkit-details-marker {
+    display: none;
+}
+
+.code-file > summary::before {
+    content: "▶";
+    color: #60a5fa;
+    font-size: 12px;
+    transition: transform 0.15s ease;
+}
+
+.code-file[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+.code-file > summary:hover {
+    background: #172033;
+}
+
+.file-header {
+    padding: 14px 0;
+    border-top: 1px solid #1f2937;
+}
+
+.file-header h2 {
+    margin: 4px 0;
+}
+
+.file-path {
+    margin: 5px 0 0;
+    color: #93c5fd;
+    font-family: monospace;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.file-content {
+    padding: 0 20px 20px;
+}
+
+.file-name {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.section-label {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.package-name {
+    display: block;
+    margin-top: 5px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.class-block {
+    margin-top: 18px;
+    padding: 18px;
+    padding-right: 24px;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    max-width: 1100px;
+}
+
+.metrics-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.metrics-row span {
+    padding: 6px 10px;
+    background: #172033;
+    border-radius: 999px;
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+.warning-block {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #1c1917;
+    border: 1px solid #78350f;
+    border-radius: 10px;
+}
+
+.warning-block ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+}
+
+.class-block h3 {
+    margin: 5px 0 20px;
+}
+
+.method-list {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.laravel-method-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.method-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid #1f2937;
+}
+
+.laravel-method {
+    padding: 14px 16px;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+}
+
+.method-item:last-child {
+    border-bottom: 0;
+}
+
+.method-main {
+    min-width: 0;
+}
+
+.laravel-method-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.method-name .laravel-method {
+    display: block;
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.method-arguments .laravel-method {
+    display: block;
+    margin-top: 6px;
+    color: #94a3b8;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.method-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.method-returns {
+    margin-top: 12px;
+}
+
+.method-returns ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+}
+
+.method-returns code {
+    color: #60a5fa;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.return-type {
+    align-self: start;
+    color: #60a5fa;
+    white-space: nowrap;
+}
+
+.database-table {
+    margin-bottom: 18px;
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.database-table > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+    cursor: pointer;
+}
+
+.database-table > summary h3 {
+    margin: 4px 0 0;
+    color: #f8fafc;
+    font-size: 18px;
+}
+
+.database-table-content {
+    padding: 0 24px 24px;
+}
+
+.database-column-header,
+.database-column {
+    display: grid;
+    grid-template-columns:
+        minmax(180px, 1fr)
+        minmax(140px, 0.7fr);
+    gap: 18px;
+    align-items: center;
+}
+
+.database-column-header {
+    padding: 12px 16px;
+    color: #7dd3fc;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.database-column {
+    min-height: 48px;
+    padding: 10px 16px;
+    background: #020617;
+    border-top: 1px solid #1f2937;
+}
+
+.database-column:first-child {
+    border-top: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.database-column:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.column-name {
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+.column-type {
+    color: #60a5fa;
+}
+
+.column-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.route-list {
+    overflow: hidden;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+}
+
+.route-row {
+    display: grid;
+    grid-template-columns: 90px minmax(220px, 1fr) minmax(240px, 1fr);
+    gap: 16px;
+    align-items: center;
+    padding: 12px 16px;
+    background: #020617;
+    border-bottom: 1px solid #1f2937;
+}
+
+.route-row:last-child {
+    border-bottom: 0;
+}
+
+.route-method {
+    width: fit-content;
+    min-width: 52px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.route-get {
+    background: #064e3b;
+    color: #a7f3d0;
+}
+
+.route-post {
+    background: #1e3a8a;
+    color: #bfdbfe;
+}
+
+.route-put,
+.route-patch {
+    background: #78350f;
+    color: #fde68a;
+}
+
+.route-delete {
+    background: #7f1d1d;
+    color: #fecaca;
+}
+
+.route-uri {
+    color: #f8fafc;
+    overflow-wrap: anywhere;
+}
+
+.route-target {
+    color: #94a3b8;
+}
+
+.python-imports {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+}
+
+.python-imports ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    columns: 2;
+}
+
+.python-class,
+.python-functions {
+    margin-top: 20px;
+}
+
+.python-class {
+    padding: 18px;
+    background: #0b1220;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+}
+
+.python-class-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.python-class-header h3 {
+    margin: 4px 0 0;
+}
+
+.python-callable-list {
+    display: grid;
+    gap: 12px;
+}
+
+.python-callable {
+    padding: 14px 16px;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+}
+
+.python-callable-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 800px) {
+    .database-column-header {
+        display: none;
+    }
+
+    .database-column {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .route-row {
+        grid-template-columns: 80px minmax(0, 1fr);
+    }
+
+    .route-target {
+        grid-column: 2;
+    }
+
+    .python-imports ul {
+        columns: 1;
+    }
+}

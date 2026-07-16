@@ -33,3 +33,23 @@ def build_android_context_graph(files):
         }
     
     return graph
+
+def build_android_filter_graph(context_graph, focus):
+    if not focus:
+        return context_graph
+    
+    focus = focus.lower()
+    
+    return {
+        name: info
+        for name, info in context_graph.items()
+        if (
+            focus in name.lower()
+            or focus in info.get("path", "").lower()
+            or any(
+                focus in dep["name"].lower()
+                or focus in dep["path"].lower()
+                for dep in info.get("dependencies", [])
+            )
+        )
+    }

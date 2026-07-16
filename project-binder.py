@@ -10,6 +10,10 @@ from binder.scanners.project import scan_project
 
 from binder.builders.context import build_full_context, build_focus_context, write_context
 
+# Server
+from binder.server.app import start_server
+from binder.server.process import start_background_server, get_server_status, stop_background_server
+
 def binder_dir():
     path = config.ROOT / "project-binder"
     path.mkdir(exist_ok=True)
@@ -36,6 +40,16 @@ def main():
     focus_type, focus, scopes = parse_focus_scope(args)
     
     config.set_root(args.project_path)
+    
+    if args.serve_status:
+        status = get_server_status(args.project_path)
+        print(status)
+        return
+    
+    if args.serve_stop:
+        stop_background_server(args.project_path)
+        return
+    
     ensure_gitignore_entry()
     
     project_type = detect_project_type(config.ROOT)
@@ -49,6 +63,14 @@ def main():
         binder_dir() / f"{config.ROOT.name}_project_context.json",
         full_context,
     )
+    
+    if args.serve_worker:
+        start_server(binder_dir())
+        return
+    
+    if args.serve:
+        start_background_server(config.ROOT)
+        return
     
     if focus or any(scopes.values()):
         focused_context = build_focus_context(scan, focus, scopes)
