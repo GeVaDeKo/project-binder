@@ -92,6 +92,7 @@ def build_focus_context(scan, focus, scopes):
     project_type = scan.get("project_type", "unknown")
     
     filtered_laravel = {
+        "custom_classes": filter_models(scan["custom_classes"]),
         "controllers": filter_controllers(scan["controllers"], focus),
         "models": filter_models(scan["models"], focus),
         "services": filter_controllers(scan["services"], focus),

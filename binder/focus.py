@@ -41,7 +41,7 @@ def filter_controllers(items, focus):
 
     return filtered
     
-def filter_models(items, focus):
+def filter_models(items, focus=None):
     if not focus:
         return items
     
