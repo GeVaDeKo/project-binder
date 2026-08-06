@@ -28,6 +28,7 @@ def build_laravel_focus_shared_context(scan, focus, include_database=False):
 
 def build_laravel_focus_context(filtered, scopes):  
     return {
+        "custom_classes": filtered["custom_classes"],
         "controllers": filtered["controllers"] if scope_enabled(scopes, "controllers") else [],
         "models": filtered["models"] if scope_enabled(scopes, "models") else [],
         "services": filtered["services"] if scope_enabled(scopes, "services") else [],

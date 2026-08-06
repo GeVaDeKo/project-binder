@@ -41,7 +41,7 @@ def filter_controllers(items, focus):
 
     return filtered
     
-def filter_models(items, focus=None):
+def filter_models(items, focus):
     if not focus:
         return items
     
@@ -51,6 +51,33 @@ def filter_models(items, focus=None):
         or any(matches_focus(rel.get("name"), focus) for rel in item.get("relations"))
         or any(matches_focus(rel.get("target"), focus) for rel in item.get("relations", []))
     ]
+
+def filter_custom_classes(items, focus):
+    if not focus:
+        return items
+    
+    filtered = []
+    
+    for item in items:
+        path_matches = matches_focus(item.get("path"), focus)
+        group_matches = matches_focus(item.get("group"), focus)
+        category_matches = matches_focus(item.get("category"), focus)
+        
+        methods = filter_methods(item.get("methods", []), focus)
+        
+        # Wanneer het bestand zelf matcht, behouden we de volledige class.
+        if path_matches or group_matches or category_matches:
+            filtered.append(item)
+            continue
+
+        # Wanneer alleen een method matcht, geven we de class terug
+        # met alleen de relevante methods.
+        if methods:
+            copy = dict(item)
+            copy["methods"] = methods
+            filtered.append(copy)
+
+    return filtered
     
 def filter_routes(items, focus):
     if not focus:

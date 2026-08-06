@@ -11,6 +11,7 @@ from binder.builders.project import (
 from binder.focus import (
     filter_controllers,
     filter_models,
+    filter_custom_classes,
     filter_routes,
     filter_by_path,
 )
@@ -92,7 +93,7 @@ def build_focus_context(scan, focus, scopes):
     project_type = scan.get("project_type", "unknown")
     
     filtered_laravel = {
-        "custom_classes": filter_models(scan["custom_classes"]),
+        "custom_classes": filter_custom_classes(scan.get("custom_classes", []), focus),
         "controllers": filter_controllers(scan["controllers"], focus),
         "models": filter_models(scan["models"], focus),
         "services": filter_controllers(scan["services"], focus),
