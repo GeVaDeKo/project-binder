@@ -4,6 +4,7 @@ from binder.builders.generator import scope_enabled
 
 def build_laravel_context(scan):
     return{
+        "custom_classes": scan["custom_classes"],
         "controllers": scan["controllers"],
         "models": scan["models"],
         "services": scan["services"],

@@ -3,6 +3,7 @@ from binder.scanners.laravel.php import scan_php_directory, collect_class_names
 from binder.scanners.laravel.models import scan_models
 from binder.scanners.laravel.services import scan_services
 from binder.scanners.laravel.routes import scan_routes
+from binder.scanners.laravel.classes import scan_custom_classes
 from binder.scanners.laravel.views import scan_views
 from binder.scanners.laravel.disks import scan_disk
 
@@ -30,12 +31,19 @@ def scan_laravel_project(focus=None):
     services = scan_services()
     views = scan_views()
     routes = scan_routes()
+    custom_classes = scan_custom_classes(
+        models=model_names,
+        services=services_names,
+        requests=request_names,
+        deep=deep,
+    )
     
     database = build_database_snapshot(migrations)
     disks = scan_disk()
     context_graph = build_context_graph(database, models)
     
     return {
+        "custom_classes": custom_classes,
         "controllers": controllers,
         "models": models,
         "services": services,
